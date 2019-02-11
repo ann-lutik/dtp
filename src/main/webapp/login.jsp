@@ -1,11 +1,13 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Главная</title>
-    <link href="lib/css/bootstrap.min.css" rel="stylesheet">
-    <script src="lib/js/jquery-3.3.1.js"></script>
-    <script src="lib/js/bootstrap.bundle.js"></script>
+    <link href="resources/lib/css/bootstrap.css" rel="stylesheet">
+    <script src="resources/lib/js/jquery-3.3.1.js"></script>
+    <script src="resources/lib/js/bootstrap.bundle.js"></script>
     <style type="text/css">
 
         .login-form {
