@@ -6,7 +6,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "accident")
-public class Accident {
+public class Accident implements Identifiable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -142,4 +142,10 @@ public class Accident {
                 ", type='" + typeAccident + '\'' +
                 '}';
     }
+
+    @Override
+    public Long getId() {
+        return codeAccident;
+    }
+
 }

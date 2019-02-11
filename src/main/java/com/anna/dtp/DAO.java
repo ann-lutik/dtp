@@ -1,12 +1,14 @@
 package com.anna.dtp;
 
+import com.anna.dtp.entity.Identifiable;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
-public class DAO<T> {
+public class DAO<T extends Identifiable> {
 
     private EntityManager em = Persistence
             .createEntityManagerFactory("openJPA")
@@ -15,39 +17,64 @@ public class DAO<T> {
     public T read(Class<T> entityClass, Long id) {
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
-        T entity = em.find(entityClass, id);
-        transaction.commit();
-        return entity;
+        try {
+            T entity = em.find(entityClass, id);
+            transaction.commit();
+            return entity;
+        } catch (RuntimeException e) {
+            if (transaction.isActive()) {
+                transaction.rollback();
+            }
+            throw e;
+        }
     }
 
     public List<T> readAll(Class<T> entityClass) {
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
-        CriteriaQuery<T> criteriaQuery = em.getCriteriaBuilder().createQuery(entityClass);
-        List<T> entities = em.createQuery(criteriaQuery.select(criteriaQuery.from(entityClass))).getResultList();
-        transaction.commit();
-        return entities;
+        try {
+            CriteriaQuery<T> criteriaQuery = em.getCriteriaBuilder().createQuery(entityClass);
+            List<T> entities = em.createQuery(criteriaQuery.select(criteriaQuery.from(entityClass))).getResultList();
+            transaction.commit();
+            return entities;
+        } catch (RuntimeException e) {
+            if (transaction.isActive()) {
+                transaction.rollback();
+            }
+            throw e;
+        }
     }
 
-    public void create(T entity) {
+    public void createOrUpdate(T entity) {
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
-        em.persist(entity);
-        transaction.commit();
-    }
-
-    public void update(T entity) {
-        EntityTransaction transaction = em.getTransaction();
-        transaction.begin();
-        em.merge(entity);
-        transaction.commit();
+        try {
+            if (entity.getId() == null) {
+                em.persist(entity);
+            } else {
+                em.merge(entity);
+            }
+            transaction.commit();
+        } catch (RuntimeException e) {
+            if (transaction.isActive()) {
+                transaction.rollback();
+            }
+            throw e;
+        }
     }
 
     public void remove(T entity) {
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
-        em.remove(entity);
-        transaction.commit();
+        try {
+            em.remove(entity);
+            transaction.commit();
+        } catch (RuntimeException e) {
+            if (transaction.isActive()) {
+                transaction.rollback();
+            }
+            throw e;
+        }
     }
 
 }

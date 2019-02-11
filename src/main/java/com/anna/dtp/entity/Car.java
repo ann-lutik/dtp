@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "car")
-public class Car {
+public class Car implements Identifiable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,7 +20,7 @@ public class Car {
     private String governmentNumber;
 
     @Column(name = "car_brand")
-    private String car_brand;
+    private String carBrand;
 
     @Column(name = "model")
     private String model;
@@ -44,10 +44,10 @@ public class Car {
     public Car() {
     }
 
-    public Car(String vin, String governmentNumber, String car_brand, String model, String category, String color, Person person, Accident accident) {
+    public Car(String vin, String governmentNumber, String carBrand, String model, String category, String color, Person person, Accident accident) {
         this.vin = vin;
         this.governmentNumber = governmentNumber;
-        this.car_brand = car_brand;
+        this.carBrand = carBrand;
         this.model = model;
         this.category = category;
         this.color = color;
@@ -79,12 +79,12 @@ public class Car {
         this.governmentNumber = governmentNumber;
     }
 
-    public String getCar_brand() {
-        return car_brand;
+    public String getCarBrand() {
+        return carBrand;
     }
 
-    public void setCar_brand(String car_brand) {
-        this.car_brand = car_brand;
+    public void setCarBrand(String carBrand) {
+        this.carBrand = carBrand;
     }
 
     public String getModel() {
@@ -134,4 +134,10 @@ public class Car {
                 ", vin='" + vin + '\'' +
                 '}';
     }
+
+    @Override
+    public Long getId() {
+        return codeCar;
+    }
+
 }

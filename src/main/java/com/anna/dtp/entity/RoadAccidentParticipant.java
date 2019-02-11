@@ -6,12 +6,12 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "road_accident_participant")
-public class RoadAccidentParticipant {
+public class RoadAccidentParticipant implements Identifiable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "code_road_accident_participant")
-    private Long code_road_accident_participant;
+    private Long codeRoadAccidentParticipant;
 
     @Column(name = "drivers_license_number")
     private String driversLicenseNumber;
@@ -53,12 +53,12 @@ public class RoadAccidentParticipant {
         this.offence = offence;
     }
 
-    public long getCode_road_accident_participant() {
-        return code_road_accident_participant;
+    public long getCodeRoadAccidentParticipant() {
+        return codeRoadAccidentParticipant;
     }
 
-    public void setCode_road_accident_participant(long code_road_accident_participant) {
-        this.code_road_accident_participant = code_road_accident_participant;
+    public void setCodeRoadAccidentParticipant(long codeRoadAccidentParticipant) {
+        this.codeRoadAccidentParticipant = codeRoadAccidentParticipant;
     }
 
     public String getDriversLicenseNumber() {
@@ -120,8 +120,14 @@ public class RoadAccidentParticipant {
     @Override
     public String toString() {
         return "Road Accident Participant{" +
-                "id=" + code_road_accident_participant +
+                "id=" + codeRoadAccidentParticipant +
                 ", License Number='" + driversLicenseNumber + '\'' +
                 '}';
     }
+
+    @Override
+    public Long getId() {
+        return codeRoadAccidentParticipant;
+    }
+
 }

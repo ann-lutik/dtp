@@ -20,37 +20,66 @@
         <postgresql.version>42.2.5</postgresql.version>
         <junit.version>4.11</junit.version>
         <slf4j-simple.version>1.7.12</slf4j-simple.version>
-        <tomcat.deployDirPath>D:\Program Files\apache-tomcat-9.0.0.M17\webapps\dtp</tomcat.deployDirPath>
+        <maven-war-plugin.version>3.2.2</maven-war-plugin.version>
+        <spring.version>4.0.0.RELEASE</spring.version>
     </properties>
 
     <dependencies>
+
         <dependency>
             <groupId>javax.persistence</groupId>
             <artifactId>javax.persistence-api</artifactId>
             <version>${persistence.version}</version>
             <scope>provided</scope>
         </dependency>
+
         <dependency>
             <groupId>org.apache.openjpa</groupId>
             <artifactId>openjpa-all</artifactId>
             <version>${openjpa.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>${postgresql.version}</version>
         </dependency>
+
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-simple</artifactId>
             <version>${slf4j-simple.version}</version>
         </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -59,13 +88,9 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>3.2.2</version>
-                <configuration>
-                    <webappDirectory>${tomcat.deployDirPath}</webappDirectory>
-                </configuration>
+                <version>${maven-war-plugin.version}</version>
             </plugin>
         </plugins>
     </build>
-
 
 </project>
