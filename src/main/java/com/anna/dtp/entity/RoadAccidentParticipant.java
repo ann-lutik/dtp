@@ -1,33 +1,41 @@
 package com.anna.dtp.entity;
+
 import org.apache.openjpa.persistence.jdbc.ForeignKey;
+
 import javax.persistence.*;
+
 @Entity
 @Table(name = "road_accident_participant")
 public class RoadAccidentParticipant {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "code_road_accident_participant")
-    private long code_road_accident_participant;
+    private Long code_road_accident_participant;
+
     @Column(name = "drivers_license_number")
     private String driversLicenseNumber;
+
     @Column(name = "type_participation")
     private String typeParticipation;
+
     @Column(name = "driving_experience")
     private String drivingExperience;
+
     @Column(name = "is_guilty")
     private String isGuilty;
 
-    @ManyToOne(targetEntity=Person.class)
+    @ManyToOne(targetEntity = Person.class)
     @JoinColumn(name = "id_person")
     @ForeignKey
     private Person person;
 
-    @ManyToOne(targetEntity=Accident.class)
+    @ManyToOne(targetEntity = Accident.class)
     @JoinColumn(name = "code_accident")
     @ForeignKey
     private Accident accident;
 
-    @ManyToOne(targetEntity=Offence.class)
+    @ManyToOne(targetEntity = Offence.class)
     @JoinColumn(name = "code_offence")
     @ForeignKey
     private Offence offence;
@@ -111,8 +119,8 @@ public class RoadAccidentParticipant {
 
     @Override
     public String toString() {
-        return "Road Accident Participant{"+
-                "id="+ code_road_accident_participant +
+        return "Road Accident Participant{" +
+                "id=" + code_road_accident_participant +
                 ", License Number='" + driversLicenseNumber + '\'' +
                 '}';
     }

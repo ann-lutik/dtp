@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -20,6 +20,7 @@
         <postgresql.version>42.2.5</postgresql.version>
         <junit.version>4.11</junit.version>
         <slf4j-simple.version>1.7.12</slf4j-simple.version>
+        <tomcat.deployDirPath>D:\Program Files\apache-tomcat-9.0.0.M17\webapps\dtp</tomcat.deployDirPath>
     </properties>
 
     <dependencies>
@@ -51,8 +52,19 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
     <build>
         <finalName>${project.artifactId}</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.2.2</version>
+                <configuration>
+                    <webappDirectory>${tomcat.deployDirPath}</webappDirectory>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 
 

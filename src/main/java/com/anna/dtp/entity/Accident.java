@@ -1,27 +1,37 @@
 package com.anna.dtp.entity;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+
 @Entity
 @Table(name = "accident")
 public class Accident {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "code_accident")
-    private long codeAccident;
+    private Long codeAccident;
+
     @Column(name = "date_accident")
     @Temporal(TemporalType.DATE)
     private Date dateAccident;
+
     @Column(name = "type_accident")
     private String typeAccident;
+
     @Column(name = "death_toll")
     private Integer deathToll;
+
     @Column(name = "number_of_victims")
     private Integer numberOfVictims;
+
     @Column(name = "weather")
     private String weather;
+
     @Column(name = "type_of_coating")
     private String typeOfCoating;
+
     @Column(name = "view_road_construction")
     private String viewRoadConstruction;
 
@@ -126,8 +136,8 @@ public class Accident {
 
     @Override
     public String toString() {
-        return "Accident{"+
-                "id="+ codeAccident +
+        return "Accident{" +
+                "id=" + codeAccident +
                 ", date='" + dateAccident + '\'' +
                 ", type='" + typeAccident + '\'' +
                 '}';

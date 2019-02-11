@@ -1,29 +1,37 @@
 package com.anna.dtp.entity;
 
 import org.apache.openjpa.persistence.jdbc.ForeignKey;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "car")
 public class Car {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "code_car")
-    private long codeCar;
+    private Long codeCar;
+
     @Column(name = "vin")
     private String vin;
+
     @Column(name = "government_number")
     private String governmentNumber;
+
     @Column(name = "car_brand")
     private String car_brand;
+
     @Column(name = "model")
     private String model;
+
     @Column(name = "category")
     private String category;
+
     @Column(name = "color")
     private String color;
 
-    @ManyToOne(targetEntity=Person.class)
+    @ManyToOne(targetEntity = Person.class)
     @JoinColumn(name = "id_person")
     @ForeignKey
     private Person person;
@@ -32,6 +40,7 @@ public class Car {
     @JoinColumn(name = "code_accident")
     @ForeignKey
     private Accident accident;
+
     public Car() {
     }
 
@@ -120,8 +129,8 @@ public class Car {
 
     @Override
     public String toString() {
-        return "Car{"+
-                "id="+ codeCar+
+        return "Car{" +
+                "id=" + codeCar +
                 ", vin='" + vin + '\'' +
                 '}';
     }

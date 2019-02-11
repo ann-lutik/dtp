@@ -1,13 +1,17 @@
 package com.anna.dtp.entity;
+
 import javax.persistence.*;
 import java.util.List;
+
 @Entity
 @Table(name = "offence")
 public class Offence {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "code_offence")
-    private long codeOffence;
+    private Long codeOffence;
+
     @Column(name = "name_offence")
     private String nameOffence;
 
@@ -47,8 +51,8 @@ public class Offence {
 
     @Override
     public String toString() {
-        return "Offence{"+
-                "id="+ codeOffence +
+        return "Offence{" +
+                "id=" + codeOffence +
                 ", name='" + nameOffence + '\'' +
                 '}';
     }

@@ -1,28 +1,38 @@
 package com.anna.dtp.entity;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+
 @Entity
 @Table(name = "person")
 public class Person {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_person")
-    private long idPerson;
+    private Long idPerson;
+
     @Column(name = "name")
     private String name;
+
     @Column(name = "surname")
     private String surname;
+
     //otchestvo
     @Column(name = "middle_name")
     private String middleName;
+
     @Column(name = "date_birth")
     @Temporal(TemporalType.DATE)
     private Date dateBirth;
+
     @Column(name = "address_person")
     private String addressPerson;
+
     @Column(name = "role")
     private String role;
+
     @Column(name = "password")
     private String password;
 
@@ -31,7 +41,6 @@ public class Person {
 
     @OneToMany(targetEntity = RoadAccidentParticipant.class, cascade = CascadeType.ALL, mappedBy = "person")
     private List<RoadAccidentParticipant> roadAccidentParticipants;
-
 
     public Person() {
     }
@@ -128,8 +137,8 @@ public class Person {
 
     @Override
     public String toString() {
-        return "Person{"+
-                "id="+ idPerson+
+        return "Person{" +
+                "id=" + idPerson +
                 ", name='" + name + '\'' +
                 '}';
     }
