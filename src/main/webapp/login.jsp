@@ -1,13 +1,13 @@
-<%@ page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://www.springframework.org/tags" %>
+<%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Главная</title>
-    <link href="resources/lib/css/bootstrap.css" rel="stylesheet">
-    <script src="resources/lib/js/jquery-3.3.1.js"></script>
-    <script src="resources/lib/js/bootstrap.bundle.js"></script>
+    <link href="<c:url value="resources/lib/css/bootstrap.css"/>" type="text/css" rel="stylesheet">
+    <script src="<c:url value="resources/lib/js/jquery-3.3.1.js"/>" type="text/javascript"></script>
+    <script src="<c:url value="resources/lib/js/bootstrap.bundle.js"/>" type="text/javascript"></script>
     <style type="text/css">
 
         .login-form {
@@ -41,7 +41,7 @@
 <body>
 <div class="login-form">
 
-    <form action='<c:url value="/j_spring_security_check" />' method="post">
+    <form action="/j_spring_security_check" method="post">
         <h2 class="text-center">Войти</h2>
         <div class="form-group">
             <input type="text" class="form-control" name="j_username" placeholder="Логин" required="required">
@@ -57,6 +57,15 @@
                 Запомнить</label>
         </div>
     </form>
+
+    <%
+        String error = request.getParameter("error");
+        if (error != null && error.equals("true")) {
+    %>
+    <div>Неверные логин и/или пароль!</div>
+    <%
+        }
+    %>
 
 </div>
 </body>
