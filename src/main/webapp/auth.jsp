@@ -41,31 +41,31 @@
 <body>
 <div class="login-form">
 
-    <form action="/j_spring_security_check" method="post">
+    <form action="<c:url value="login" />" method="post">
         <h2 class="text-center">Войти</h2>
         <div class="form-group">
-            <input type="text" class="form-control" name="j_username" placeholder="Логин" required="required">
+            <input type="text" class="form-control" name="login" placeholder="Логин" required="required">
         </div>
         <div class="form-group">
-            <input type="password" class="form-control" name="j_password" placeholder="Пароль" required="required">
+            <input type="password" class="form-control" name="pass" placeholder="Пароль" required="required">
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-primary btn-block">Войти</button>
         </div>
         <div class="clearfix">
-            <label class="pull-left checkbox-inline"><input type="checkbox" name="_spring_security_remember_me">
+            <label class="pull-left checkbox-inline"><input type="checkbox" name="rememberMe">
                 Запомнить</label>
         </div>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        <%
+            String error = request.getParameter("error");
+            if (error != null && error.equals("true")) {
+        %>
+        <div class="alert-danger">Неверные логин и/или пароль!</div>
+        <%
+            }
+        %>
     </form>
-
-    <%
-        String error = request.getParameter("error");
-        if (error != null && error.equals("true")) {
-    %>
-    <div>Неверные логин и/или пароль!</div>
-    <%
-        }
-    %>
 
 </div>
 </body>
