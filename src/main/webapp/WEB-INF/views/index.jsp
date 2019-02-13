@@ -11,5 +11,17 @@
 </head>
 <body>
 <h1 class="text-center">Hello World!</h1>
+<form action="<c:url value="logout" />" method="post" id="logout">
+    <input type="hidden" name="${_csrf.parameterName}"
+           value="${_csrf.token}"/>
+</form>
+<div class="container">
+    <div class="row">
+        <div class="col text-center">
+            <button class="btn btn-primary" onclick="document.getElementById('logout').submit();return false">Выйти
+            </button>
+        </div>
+    </div>
+</div>
 </body>
 </html>

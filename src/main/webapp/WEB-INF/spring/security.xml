@@ -9,7 +9,7 @@
     <http>
         <access-denied-handler error-page="/403.jsp"/>
         <intercept-url pattern="/auth.jsp" access="permitAll()" method="GET"/>
-        <intercept-url pattern="/index" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')"/>
+        <intercept-url pattern="/index" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')" method="GET"/>
         <intercept-url pattern="/rest/get/*" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')" method="GET"/>
         <intercept-url pattern="/rest/add/*" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')" method="PUT"/>
         <intercept-url pattern="/rest/update/*" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')" method="POST"/>
@@ -20,7 +20,7 @@
                     default-target-url="/index"
                     authentication-failure-url="/auth.jsp?error=true"
                     always-use-default-target="true"/>
-        <logout logout-url="/logout" logout-success-url="/index" invalidate-session="true"/>
+        <logout logout-success-url="/auth.jsp" invalidate-session="true"/>
         <remember-me token-validity-seconds="86400" remember-me-parameter="rememberMe"/>
         <csrf/>
     </http>
