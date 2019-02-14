@@ -1,8 +1,8 @@
 .idea
 out
 target
-node_modules
+ui/node_modules
 ui/build
-package-lock.json
+ui/package-lock.json
 *.iml
 
