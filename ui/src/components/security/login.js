@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import {Form, ControlLabel, FormControl, FormGroup, Button} from 'react-bootstrap'
+import React, {Component} from 'react';
+import {Button, ControlLabel, Form, FormControl, FormGroup} from 'react-bootstrap'
 import {getAccessToken, tryLogin} from "../../routine/utils/services/login-service";
 import './login-style.css'
 
@@ -9,7 +9,7 @@ class LoginComponent extends Component {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.pushHistory = this.pushHistory.bind(this);
-        this.state = { login : "admin", password : "admin", failed : false};
+        this.state = {login: "admin", password: "admin", failed: false};
     }
 
     componentDidMount() {
@@ -26,40 +26,38 @@ class LoginComponent extends Component {
     handleLogin(login, password, callback) {
 
 
-
-      //  let g= tryLogin({login, password}, (isSuccess) => callback(isSuccess));
-      //  if (g) {
-            //   window.location.href = "/";
-            //    this.pushHistory("/carBodyTypes");
-     //   }
+        //  let g= tryLogin({login, password}, (isSuccess) => callback(isSuccess));
+        //  if (g) {
+        //   window.location.href = "/";
+        //    this.pushHistory("/carBodyTypes");
+        //   }
     }
 
     handleSubmit(event) {
         event.preventDefault();
         event.stopPropagation();
 
-        tryLogin(this.state.login, this.state.password,(success) => {
+        tryLogin(this.state.login, this.state.password, (success) => {
             if (success) {
                 this.pushHistory("/");
-                this.setState({failed : false});
-            }
-            else {
-                this.setState({failed : true});
+                this.setState({failed: false});
+            } else {
+                this.setState({failed: true});
             }
         });
 
-      /* this.props.loginRequest(
-            {
-                login : this.state.login,
-                password : this.state.password
-            },
-            (isSuccess) => {
-                if (isSuccess)
-                    this.pushHistory("/");
-                else {
-                    this.setState({failed : true});
-                }
-            });  */
+        /* this.props.loginRequest(
+              {
+                  login : this.state.login,
+                  password : this.state.password
+              },
+              (isSuccess) => {
+                  if (isSuccess)
+                      this.pushHistory("/");
+                  else {
+                      this.setState({failed : true});
+                  }
+              });  */
     }
 
     render() {
@@ -70,7 +68,7 @@ class LoginComponent extends Component {
                         <ControlLabel>Логин</ControlLabel>
                         <FormControl placeholder="Введите логин"
                                      onChange={(event) => {
-                                         this.setState({login : event.target.value});
+                                         this.setState({login: event.target.value});
                                      }}/>
                     </FormGroup>
 
@@ -79,10 +77,10 @@ class LoginComponent extends Component {
                         <FormControl placeholder="Введите пароль"
                                      type="password"
                                      onChange={(event) => {
-                                         this.setState({password : event.target.value});
+                                         this.setState({password: event.target.value});
                                      }}/>
                     </FormGroup>
-                    { this.state.failed ? <FormControl.Static >Неверный логин или пароль.</FormControl.Static> : null }
+                    {this.state.failed ? <FormControl.Static>Неверный логин или пароль.</FormControl.Static> : null}
                     <Button block bsSize='medium' type="submit">Войти</Button>
                 </Form>
             </div>

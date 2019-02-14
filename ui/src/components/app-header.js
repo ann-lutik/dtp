@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import {Navbar, Nav, NavItem, NavDropdown } from "react-bootstrap";
+import React, {Component} from 'react';
+import {Nav, Navbar, NavItem} from "react-bootstrap";
 import MenuItem from "react-bootstrap/es/MenuItem";
 
 export default class AppHeader extends Component {
@@ -16,7 +16,7 @@ export default class AppHeader extends Component {
                     <Navbar.Brand>
                         <a href="/accidents">ДТП</a>
                     </Navbar.Brand>
-                    <Navbar.Toggle />
+                    <Navbar.Toggle/>
                 </Navbar.Header>
                 <Navbar.Collapse>
                     <Nav>
@@ -28,7 +28,8 @@ export default class AppHeader extends Component {
                     </Nav>
 
                     <Nav pullRight>
-                        <NavItem data-toggle="tooltip" title="На страницу аутентификации" onClick={this.props.logoutHandler}>
+                        <NavItem data-toggle="tooltip" title="На страницу аутентификации"
+                                 onClick={this.props.logoutHandler}>
                             <label>Выйти</label>
                             <span className="glyphicon glyphicon-log-out" aria-hidden="true"></span></NavItem>
                     </Nav>

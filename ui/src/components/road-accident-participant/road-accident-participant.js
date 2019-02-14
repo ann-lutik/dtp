@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import {EditTooltip, DeleteTooltip} from "../tooltips";
+import React, {Component} from 'react';
+import {DeleteTooltip, EditTooltip} from "../tooltips";
 import {OverlayTrigger} from "react-bootstrap";
 
 class RoadAccidentParticipant extends Component {
@@ -15,7 +15,7 @@ class RoadAccidentParticipant extends Component {
                 <td>{roadAccidentParticipant.driversLicenseNumber}</td>
                 <td>{roadAccidentParticipant.typeParticipation}</td>
                 <td>{roadAccidentParticipant.drivingExperience}</td>
-                <td>{roadAccidentParticipant.isGuilty}</td>  
+                <td>{roadAccidentParticipant.isGuilty}</td>
                 <td>{roadAccidentParticipant.person.idPerson}</td>
                 <td>{roadAccidentParticipant.accident.codeAccident}</td>
                 <td>{roadAccidentParticipant.offence.codeOffence}</td>

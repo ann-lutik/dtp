@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { FormGroup, MenuItem, ControlLabel, SplitButton } from "react-bootstrap";
+import React, {Component} from 'react';
+import {ControlLabel, FormGroup, MenuItem, SplitButton} from "react-bootstrap";
 
 export default class ComboboxInput extends Component {
 
@@ -7,39 +7,39 @@ export default class ComboboxInput extends Component {
         super(props);
 
         this.state = {
-            selectedItemName : ''
+            selectedItemName: ''
         };
     }
 
     componentDidMount() {
         const {initSelectedItemId, itemToString, items} = this.props;
 
-   /*     if (items) {
-            let name;
-            let selectedCandidate = items.find(i => i.id === initSelectedItemId);
-            if (selectedCandidate !== undefined && selectedCandidate !== null) {
-                name = itemToString(selectedCandidate);
-            }
-            else
-            {
-                name = items[0];
-            }
-            this.setState({selectedItemName : name});
-        } */
-      //  const {itemToString, initSelectedItem} = this.props;
-      //  this.setState({selectedItemName : itemToString(initSelectedItem)})
+        /*     if (items) {
+                 let name;
+                 let selectedCandidate = items.find(i => i.id === initSelectedItemId);
+                 if (selectedCandidate !== undefined && selectedCandidate !== null) {
+                     name = itemToString(selectedCandidate);
+                 }
+                 else
+                 {
+                     name = items[0];
+                 }
+                 this.setState({selectedItemName : name});
+             } */
+        //  const {itemToString, initSelectedItem} = this.props;
+        //  this.setState({selectedItemName : itemToString(initSelectedItem)})
     }
 
     render() {
-        const { items, title, itemToString, onSelectionChanged } = this.props;
-        const { selectedItemName } = this.state;
+        const {items, title, itemToString, onSelectionChanged} = this.props;
+        const {selectedItemName} = this.state;
         let splitButtonItems;
         if (items) {
             splitButtonItems = items.map(item => {
                 return (
                     <MenuItem eventKey={item.id} onSelect={itemEventKey => {
                         let selectedItem = this.props.items.find(i => i.id === itemEventKey);
-                        this.setState({selectedItemName : itemToString(selectedItem)});
+                        this.setState({selectedItemName: itemToString(selectedItem)});
                         onSelectionChanged(selectedItem);
                     }}>
                         {itemToString(item)}

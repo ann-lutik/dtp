@@ -1,16 +1,18 @@
 import axios from 'axios'
 import {
-    SERVER_URL,
     APP_NAME,
-    PAGE_LOGIN_URL,
     LOCAL_STORAGE_ACCESS_TOKEN_PROPERTY,
-    LOCAL_STORAGE_USERNAME_PROPERTY } from '../../constants'
+    LOCAL_STORAGE_USERNAME_PROPERTY, PAGE_ACCIDENT_LIST_URL,
+    PAGE_LOGIN_URL,
+    SERVER_URL
+} from '../../constants'
+import {sendGetRequest} from "./common-service";
 
 export function tryLogin(login, password, callback) {
     const url = SERVER_URL + APP_NAME + PAGE_LOGIN_URL;
     const request = axios.post(url, {
-        name : login,
-        password : password
+        login: login,
+        pass: password
     }).then(response => {
         if (response.status === 200) {
             const accessToken = response.data;
@@ -27,7 +29,8 @@ export function tryLogin(login, password, callback) {
 export function logout() {
     localStorage.removeItem(LOCAL_STORAGE_ACCESS_TOKEN_PROPERTY);
     localStorage.removeItem(LOCAL_STORAGE_USERNAME_PROPERTY);
-    window.location.href = "/signin";
+    const url = SERVER_URL + APP_NAME + PAGE_ACCIDENT_LIST_URL;
+    sendGetRequest(url)
 }
 
 export function getAccessToken() {

@@ -8,12 +8,12 @@ function configureToken() {
         ? {
             headers: {'Authorization': "Bearer " + accessToken}
         }
-        : { };
+        : {};
 }
 
 const catchError = (error) => {
     if (error.response && error.response.status === 401) {
-        window.location.href = "/signin";
+        window.location.href = "/login";
     }
 };
 
