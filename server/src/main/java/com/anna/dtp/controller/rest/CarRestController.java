@@ -43,7 +43,7 @@ public class CarRestController {
         DAO_CAR.createOrUpdate(car);
         return new ResponseEntity<>(car, HttpStatus.OK);
     }
-
+//Метод не должен называться delete???
     @RequestMapping(value = "/rest/cars/{id}", method = RequestMethod.DELETE, produces = {MediaType.APPLICATION_JSON_VALUE})
     public ResponseEntity<Car> updateCar(@PathVariable("id") Long id) {
         Car car = DAO_CAR.read(Car.class, id);
