@@ -16,13 +16,13 @@
         <intercept-url pattern="/rest/add/*" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')" method="PUT"/>
         <intercept-url pattern="/rest/update/*" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')" method="POST"/>
         <intercept-url pattern="/rest/delete/*" access="hasRole('ROLE_ADMIN')" method="DELETE"/>
-        <form-login login-page="/index"
+        <form-login login-page="/index.jsp"
                     username-parameter="login"
                     password-parameter="pass"
-                    default-target-url="/index"
+                    default-target-url="/index.jsp"
                     authentication-failure-url="/login"
                     always-use-default-target="true"/>
-        <logout logout-success-url="/index" invalidate-session="true"/>
+        <logout logout-success-url="/index.jsp" invalidate-session="true"/>
         <remember-me token-validity-seconds="86400" remember-me-parameter="rememberMe"/>
         <csrf/>
     </http>

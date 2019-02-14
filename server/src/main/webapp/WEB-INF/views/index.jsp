@@ -4,10 +4,10 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <link href="<c:url value="../favicon.ico"/>" rel="shortcut icon"/>
+    <link href="<c:url value="../../favicon.ico"/>" rel="shortcut icon"/>
     <meta content="width=device-width,initial-scale=1,shrink-to-fit=no" name="viewport"/>
     <meta content="#000000" name="theme-color"/>
-    <link href="<c:url value="../manifest.json"/>" rel="manifest"/>
+    <link href="<c:url value="../../manifest.json"/>" rel="manifest"/>
     <title>React App</title>
     <link href="<c:url value="../../static/css/1.68171d15.chunk.css"/>" rel="stylesheet">
     <link href="<c:url value="../../static/css/main.b2922a1c.chunk.css"/>" rel="stylesheet">
@@ -66,7 +66,7 @@
         return i.d(r, "a", r), r
     }, i.o = function (e, r) {
         return Object.prototype.hasOwnProperty.call(e, r)
-    }, i.p = "/resources/build/";
+    }, i.p = "/";
     var r = window.webpackJsonp = window.webpackJsonp || [], n = r.push.bind(r);
     r.push = e, r = r.slice();
     for (var o = 0; o < r.length; o++) e(r[o]);
