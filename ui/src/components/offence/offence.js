@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import {EditTooltip, DeleteTooltip} from "../tooltips";
+import React, {Component} from 'react';
+import {DeleteTooltip, EditTooltip} from "../tooltips";
 import {OverlayTrigger} from "react-bootstrap";
 
 class Offence extends Component {
