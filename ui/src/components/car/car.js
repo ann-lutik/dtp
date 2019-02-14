@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {DeleteTooltip, EditTooltip} from "../tooltips";
+import React, { Component } from 'react';
+import {EditTooltip, DeleteTooltip} from "../tooltips";
 import {OverlayTrigger} from "react-bootstrap";
 
 
@@ -16,7 +16,7 @@ class Car extends Component {
                 <td>{car.vin}</td>
                 <td>{car.governmentNumber}</td>
                 <td>{car.car_brand}</td>
-                <td>{car.model}</td>
+                <td>{car.model}</td>  
                 <td>{car.category}</td>
                 <td>{car.color}</td>
                 <td>{car.person.idPerson}</td>

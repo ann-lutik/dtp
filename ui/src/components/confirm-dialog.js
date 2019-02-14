@@ -1,6 +1,5 @@
-import React, {Component} from 'react';
-import {ControlLabel, Form, FormGroup, Modal} from "react-bootstrap";
-
+import React, { Component } from 'react';
+import { FormGroup, Form, ControlLabel, FormControl, Button, ButtonGroup, Modal } from "react-bootstrap";
 export default class ConfirmDialog extends Component {
 
     constructor(props) {
@@ -8,7 +7,7 @@ export default class ConfirmDialog extends Component {
     }
 
     handleSubmit(event) {
-        const {onConfirm} = this.props;
+        const {onConfirm}  = this.props;
         event.preventDefault();
         event.stopPropagation();
         onConfirm();

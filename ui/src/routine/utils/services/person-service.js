@@ -2,14 +2,12 @@ import {
     sendGetRequest,
     sendPostRequest,
     sendPutRequest,
-    sendDeleteRequest
-} from './common-service'
+    sendDeleteRequest } from './common-service'
 
 import {
     SERVER_URL,
     APP_NAME,
-    PAGE_PERSON_LIST_URL
-} from '../../constants'
+    PAGE_PERSON_LIST_URL } from '../../constants'
 
 
 export function getPersons() {
@@ -19,12 +17,12 @@ export function getPersons() {
 
 export function addPerson(person) {
     const url = SERVER_URL + APP_NAME + PAGE_PERSON_LIST_URL;
-    return sendPutRequest(url, person);
+    return sendPostRequest(url, person);
 }
 
 export function updatePerson(person) {
     const url = SERVER_URL + APP_NAME + PAGE_PERSON_LIST_URL;
-    return sendPostRequest(url, person);
+    return sendPutRequest(url, person);
 }
 
 export function deletePerson(id) {

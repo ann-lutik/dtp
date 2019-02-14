@@ -2,14 +2,12 @@ import {
     sendGetRequest,
     sendPostRequest,
     sendPutRequest,
-    sendDeleteRequest
-} from './common-service'
+    sendDeleteRequest } from './common-service'
 
 import {
     SERVER_URL,
     APP_NAME,
-    PAGE_OFFENCE_LIST_URL
-} from '../../constants'
+    PAGE_OFFENCE_LIST_URL } from '../../constants'
 
 
 export function getOffences() {
@@ -19,12 +17,12 @@ export function getOffences() {
 
 export function addOffence(offence) {
     const url = SERVER_URL + APP_NAME + PAGE_OFFENCE_LIST_URL;
-    return sendPutRequest(url, offence);
+    return sendPostRequest(url, offence);
 }
 
 export function updateOffence(offence) {
     const url = SERVER_URL + APP_NAME + PAGE_OFFENCE_LIST_URL;
-    return sendPostRequest(url, offence);
+    return sendPutRequest(url, offence);
 }
 
 export function deleteOffence(codeOffence) {

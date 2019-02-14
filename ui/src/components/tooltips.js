@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {Tooltip} from "react-bootstrap";
 
 export const EditTooltip = (

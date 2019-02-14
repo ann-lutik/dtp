@@ -1,5 +1,5 @@
 import React from 'react';
-import {Col, Form, FormControl} from 'react-bootstrap';
+import {Form, Col, FormControl} from 'react-bootstrap';
 
 class ReactInput extends React.Component {
 

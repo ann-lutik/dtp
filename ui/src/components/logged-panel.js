@@ -1,14 +1,17 @@
-import React, {Component} from 'react';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import React, { Component } from 'react';
+import {Navbar, Nav, NavItem} from "react-bootstrap";
+import {Router, Route, BrowserRouter, Switch} from 'react-router-dom';
+import LoginComponent from './security/login'
 
 import CarList from './car/car-list';
 import PersonList from './person/person-list'
 import OffenceList from './offence/offence-list'
 import AccidentList from './accident/accident-list'
 import RoadAccidentParticipantList from './road-accident-participant/road-accident-participant-list'
-import {logout} from "../routine/utils/services/login-service";
+import {tryLogin, logout} from "../routine/utils/services/login-service";
 
 import AppHeader from './app-header'
+import {getAccessToken, getCurrentUsername} from "../routine/utils/services/login-service";
 
 import './logged-panel'
 
@@ -17,9 +20,14 @@ class LoggedPanelComponent extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            username: ''
-        };
+            username : ''
+        }
         this.handleLogout = this.handleLogout.bind(this);
+    }
+
+    componentDidMount() {;
+        let currentUsername = getCurrentUsername();
+        this.setState({username : currentUsername});
     }
 
     handleLogout() {

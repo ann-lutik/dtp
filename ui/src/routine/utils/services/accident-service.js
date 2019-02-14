@@ -2,14 +2,12 @@ import {
     sendGetRequest,
     sendPostRequest,
     sendPutRequest,
-    sendDeleteRequest
-} from './common-service'
+    sendDeleteRequest } from './common-service'
 
 import {
     SERVER_URL,
     APP_NAME,
-    PAGE_ACCIDENT_LIST_URL
-} from '../../constants'
+    PAGE_ACCIDENT_LIST_URL } from '../../constants'
 
 
 export function getAccidents() {
@@ -19,12 +17,12 @@ export function getAccidents() {
 
 export function addAccident(accident) {
     const url = SERVER_URL + APP_NAME + PAGE_ACCIDENT_LIST_URL;
-    return sendPutRequest(url, accident);
+    return sendPostRequest(url, accident);
 }
 
 export function updateAccident(accident) {
     const url = SERVER_URL + APP_NAME + PAGE_ACCIDENT_LIST_URL;
-    return sendPostRequest(url, accident);
+    return sendPutRequest(url, accident);
 }
 
 export function deleteAccident(codeAccident) {
