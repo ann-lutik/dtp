@@ -1,0 +1,46 @@
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns="http://www.springframework.org/schema/security"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+              http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+              http://www.springframework.org/schema/security
+              http://www.springframework.org/schema/security/spring-security-4.0.xsd">
+
+    <http>
+        <access-denied-handler error-page="/main/webapp/403.jsp"/>
+        <intercept-url pattern="/main/webapp/auth.jsp" access="permitAll()" method="GET"/>
+        <intercept-url pattern="/index" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')" method="GET"/>
+        <intercept-url pattern="/accidents" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')" method="GET"/>
+        <intercept-url pattern="/roadAccidentParticipants" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')" method="GET"/>
+        <intercept-url pattern="/cars" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')" method="GET"/>
+        <intercept-url pattern="/persons" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')" method="GET"/>
+        <intercept-url pattern="/offences" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')" method="GET"/>
+        <intercept-url pattern="/rest/get/*" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')" method="GET"/>
+        <intercept-url pattern="/rest/add/*" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')" method="PUT"/>
+        <intercept-url pattern="/rest/update/*" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')" method="POST"/>
+        <intercept-url pattern="/rest/delete/*" access="hasRole('ROLE_ADMIN')" method="DELETE"/>
+        <form-login login-page="/main/webapp/auth.jsp"
+                    username-parameter="login"
+                    password-parameter="pass"
+                    default-target-url="/index"
+                    authentication-failure-url="/auth.jsp?error=true"
+                    always-use-default-target="true"/>
+        <logout logout-success-url="/main/webapp/auth.jsp" invalidate-session="true"/>
+        <remember-me token-validity-seconds="86400" remember-me-parameter="rememberMe"/>
+        <csrf/>
+    </http>
+
+    <authentication-manager>
+        <authentication-provider>
+            <password-encoder hash="sha"/>
+            <user-service>
+                <!-- sha(admin) = d033e22ae348aeb5660fc2140aec35850c4da997 -->
+                <!-- sha(user) = 12dea96fec20593566ab75692c9949596833adc9 -->
+                <user name="admin" password="d033e22ae348aeb5660fc2140aec35850c4da997"
+                      authorities="ROLE_ADMIN,ROLE_USER"/>
+                <user name="user" password="12dea96fec20593566ab75692c9949596833adc9" authorities="ROLE_USER"/>
+            </user-service>
+        </authentication-provider>
+    </authentication-manager>
+
+</beans:beans>
