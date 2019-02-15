@@ -10,6 +10,7 @@
 
     <resources mapping="/static/**" location="/static/"/>
 
+    <annotation-driven/>
     <beans:bean
             class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <beans:property name="prefix" value="/WEB-INF/views/"/>
