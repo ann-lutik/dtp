@@ -23,14 +23,14 @@
         <property name="packagesToScan" value="com.anna.dtp.entity"/>
     </bean>
 
-    <bean id="txManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="emf"/>
         <property name="jpaDialect" ref="jpaDialect"/>
     </bean>
 
     <bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.OpenJpaDialect"/>
 
-    <tx:annotation-driven transaction-manager="txManager"/>
+    <tx:annotation-driven/>
 
     <context:component-scan base-package="com.anna.dtp.service"/>
     <jpa:repositories base-package="com.anna.dtp.repository" entity-manager-factory-ref="emf"/>
