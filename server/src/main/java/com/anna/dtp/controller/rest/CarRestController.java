@@ -47,7 +47,7 @@ public class CarRestController {
     }
 
     @RequestMapping(value = "/cars/{id}", method = RequestMethod.DELETE, produces = {MediaType.APPLICATION_JSON_VALUE})
-    public ResponseEntity<Car> updateCar(@PathVariable("id") Long id) {
+    public ResponseEntity<Car> deleteCar(@PathVariable("id") Long id) {
         Car car = carService.read(Car.class, id);
         if (car == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
