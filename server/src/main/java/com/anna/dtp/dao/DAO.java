@@ -1,4 +1,4 @@
-package com.anna.dtp;
+package com.anna.dtp.dao;
 
 import com.anna.dtp.entity.Identifiable;
 import org.springframework.stereotype.Repository;

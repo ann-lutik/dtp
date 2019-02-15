@@ -1,5 +1,6 @@
 package com.anna.dtp;
 
+import com.anna.dtp.dao.DAO;
 import com.anna.dtp.entity.Accident;
 import org.junit.Assert;
 import org.junit.Test;
