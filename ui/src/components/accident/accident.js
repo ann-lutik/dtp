@@ -12,7 +12,12 @@ class Accident extends Component {
         const accident = this.props.accident;
         return (
             <tr key={accident.codeAccident}>
-                <td>{accident.dateAccident}</td>
+                <td>{accident.codeAccident}</td>
+                <td>{new Intl.DateTimeFormat({
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit'
+                }).format(accident.dateAccident)}</td>
                 <td>{accident.typeAccident}</td>
                 <td>{accident.deathToll}</td>
                 <td>{accident.numberOfVictims}</td>

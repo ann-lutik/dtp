@@ -9,8 +9,8 @@
     <meta content="#000000" name="theme-color"/>
     <link href="<c:url value="../../manifest.json"/>" rel="manifest"/>
     <title>React App</title>
-    <link href="<c:url value="../../static/css/1.68171d15.chunk.css"/>" rel="stylesheet">
-    <link href="<c:url value="../../static/css/main.b2922a1c.chunk.css"/>" rel="stylesheet">
+    <link href="<c:url value="../../static/css/1.0fccf73c.chunk.css"/>" rel="stylesheet">
+    <link href="<c:url value="../../static/css/main.e5ff6ead.chunk.css"/>" rel="stylesheet">
 </head>
 <body>
 <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -73,7 +73,7 @@
     var d = n;
     a()
 }([])</script>
-<script src="<c:url value="../../static/js/1.5243957f.chunk.js"/>"></script>
-<script src="<c:url value="../../static/js/main.0dd466cb.chunk.js"/>"></script>
+<script src="<c:url value="../../static/js/1.9a28cdb8.chunk.js"/>"></script>
+<script src="<c:url value="../../static/js/main.22ef592e.chunk.js"/>"></script>
 </body>
 </html>

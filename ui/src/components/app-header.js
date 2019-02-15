@@ -14,17 +14,17 @@ export default class AppHeader extends Component {
             <Navbar inverse>
                 <Navbar.Header>
                     <Navbar.Brand>
-                        <a href="/accidents">ДТП</a>
+                        <a href="#">ДТП</a>
                     </Navbar.Brand>
                     <Navbar.Toggle/>
                 </Navbar.Header>
                 <Navbar.Collapse>
                     <Nav>
-                        <NavItem href="/accidents">ДТП</NavItem>
-                        <NavItem href="/roadAccidentParticipants">Участники ДТП</NavItem>
-                        <MenuItem href="/cars">Автомобили</MenuItem>
-                        <NavItem href="/persons">Люди</NavItem>
-                        <NavItem href="/offences">Нарушения</NavItem>
+                        <NavItem>ДТП</NavItem>
+                        <NavItem>Участники ДТП</NavItem>
+                        <MenuItem>Автомобили</MenuItem>
+                        <NavItem>Люди</NavItem>
+                        <NavItem>Нарушения</NavItem>
                     </Nav>
 
                     <Nav pullRight>

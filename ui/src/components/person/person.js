@@ -12,10 +12,15 @@ class Person extends Component {
         const person = this.props.person;
         return (
             <tr key={person.idPerson}>
+                <td>{person.idPerson}</td>
                 <td>{person.name}</td>
                 <td>{person.surname}</td>
                 <td>{person.middleName}</td>
-                <td>{person.dateBirth}</td>
+                <td>{new Intl.DateTimeFormat({
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit'
+                }).format(person.dateBirth)}</td>
                 <td>{person.addressPerson}</td>
                 <td>{person.role}</td>
                 <td>{person.password}</td>

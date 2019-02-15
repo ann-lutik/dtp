@@ -13,14 +13,15 @@ class Car extends Component {
         const car = this.props.car;
         return (
             <tr key={car.codeCar}>
+                <td>{car.codeCar}</td>
                 <td>{car.vin}</td>
                 <td>{car.governmentNumber}</td>
-                <td>{car.car_brand}</td>
+                <td>{car.carBrand}</td>
                 <td>{car.model}</td>
                 <td>{car.category}</td>
                 <td>{car.color}</td>
-                <td>{car.person.idPerson}</td>
-                <td>{car.accident.codeAccident}</td>
+                <td>{car.person != null ? car.person.idPerson : ""}</td>
+                <td>{car.accident != null ? car.accident.codeAccident : ""}</td>
                 <td>
                     <div className="btn-group">
                         <OverlayTrigger placement="top" overlay={EditTooltip}>

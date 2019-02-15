@@ -29,7 +29,7 @@ class CarList extends Component {
     loadData() {
         getCars()
             .then(data => {
-                let x = Object.assign({}, this.state.cars, {data})
+                let x = Object.assign({}, this.state.cars, {data});
                 this.setState(
                     {cars: x.data});
             });

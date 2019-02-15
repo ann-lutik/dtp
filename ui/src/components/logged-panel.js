@@ -38,12 +38,12 @@ class LoggedPanelComponent extends Component {
                 <AppHeader logoutHandler={this.handleLogout} username={this.state.username}/>
                 <BrowserRouter>
                     <Switch>
-                        <Route exact path="/cars" component={CarList}/>
-                        <Route exact path="/roadAccidentParticipants" component={RoadAccidentParticipantList}/>
-                        <Route exact path="/accidents" component={AccidentList}/>
-                        <Route exact path="/persons" component={PersonList}/>
-                        <Route exact path="/offences" component={OffenceList}/>
-                        <Route path="/" exact component={AccidentList}/>
+                        <Route exact component={CarList}/>
+                        <Route exact component={RoadAccidentParticipantList}/>
+                        <Route exact component={AccidentList}/>
+                        <Route exact component={PersonList}/>
+                        <Route exact component={OffenceList}/>
+                        <Route exact component={AccidentList}/>
                     </Switch>
                 </BrowserRouter>
             </div>

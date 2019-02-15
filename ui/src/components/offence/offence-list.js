@@ -1,7 +1,11 @@
 import React, {Component} from 'react';
 import {OverlayTrigger, PageHeader, Table, Tooltip} from "react-bootstrap";
 import Offence from './offence';
-import {addOffence, deleteOffence, getOffences, updateOffence} from '../../routine/utils/services/offence-service'
+import {
+    addOffence, 
+    deleteOffence, 
+    getOffences, 
+    updateOffence} from '../../routine/utils/services/offence-service'
 
 import EditOffenceDialog from './edit-offence-dialog'
 import ConfirmDialog from '../confirm-dialog'

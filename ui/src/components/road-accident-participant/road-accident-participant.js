@@ -11,14 +11,15 @@ class RoadAccidentParticipant extends Component {
     render() {
         const roadAccidentParticipant = this.props.roadAccidentParticipant;
         return (
-            <tr key={roadAccidentParticipant.code_road_accident_participant}>
+            <tr key={roadAccidentParticipant.codeRoadAccidentParticipant}>
+                <td>{roadAccidentParticipant.codeRoadAccidentParticipant}</td>
                 <td>{roadAccidentParticipant.driversLicenseNumber}</td>
                 <td>{roadAccidentParticipant.typeParticipation}</td>
                 <td>{roadAccidentParticipant.drivingExperience}</td>
                 <td>{roadAccidentParticipant.isGuilty}</td>
-                <td>{roadAccidentParticipant.person.idPerson}</td>
-                <td>{roadAccidentParticipant.accident.codeAccident}</td>
-                <td>{roadAccidentParticipant.offence.codeOffence}</td>
+                <td>{roadAccidentParticipant.person != null ? roadAccidentParticipant.person.idPerson : ""}</td>
+                <td>{roadAccidentParticipant.accident != null ? roadAccidentParticipant.accident.codeAccident : ""}</td>
+                <td>{roadAccidentParticipant.offence != null ? roadAccidentParticipant.offence.codeOffence : ""}</td>
                 <td>
                     <div className="btn-group">
                         <OverlayTrigger placement="top" overlay={EditTooltip}>

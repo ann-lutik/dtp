@@ -8,6 +8,7 @@ export default class EditOffenceDialog extends Component {
         this.state = {
             entity: {}
         }
+        //this.updateEntity = this.updateEntity.bind(this);
     }
 
     handleSubmit(event) {

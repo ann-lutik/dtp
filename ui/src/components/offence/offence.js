@@ -12,6 +12,7 @@ class Offence extends Component {
         const offence = this.props.offence;
         return (
             <tr key={offence.codeOffence}>
+                <td>{offence.codeOffence}</td>
                 <td>{offence.nameOffence}</td>
 
                 <td>
