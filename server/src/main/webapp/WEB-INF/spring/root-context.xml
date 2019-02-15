@@ -2,36 +2,35 @@
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:jpa="http://www.springframework.org/schema/data/jpa"
-       xmlns="http://www.springframework.org/schema/beans"
+       xmlns="http://www.springframework.org/schema/beans" xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context-4.1.xsd
        http://www.springframework.org/schema/data/jpa
-       http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+       http://www.springframework.org/schema/data/jpa/spring-jpa.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <bean id="emf"
-          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
-
-        <property name="entityManagerFactoryInterface" value="javax.persistence.EntityManagerFactory"/>
-
-        <property name="jpaProperties">
-            <props>
-                <prop key="openjpa.ConnectionURL">jdbc:postgresql://localhost:5432/dtp</prop>
-                <prop key="openjpa.ConnectionDriverName">org.postgresql.Driver</prop>
-                <prop key="openjpa.ConnectionUserName">postgres</prop>
-                <prop key="openjpa.ConnectionPassword">1</prop>
-                <prop key="openjpa.Log">DefaultLevel=WARN, Tool=INFO</prop>
-                <prop key="openjpa.DynamicEnhancementAgent">true</prop>
-                <prop key="openjpa.jdbc.SynchronizeMappings">buildSchema(foreignKeys=true)</prop>
-            </props>
-        </property>
-
-        <property name="persistenceProvider">
-            <bean class="org.apache.openjpa.persistence.PersistenceProviderImpl"/>
-        </property>
-
+    <bean class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" id="dataSource">
+        <property name="driverClassName" value="org.postgresql.Driver"/>
+        <property name="url" value="jdbc:postgresql://localhost:5432/dtp"/>
+        <property name="username" value="postgres"/>
+        <property name="password" value="1"/>
     </bean>
+
+    <bean class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" id="emf">
+        <property name="persistenceUnitName" value="openJPA"/>
+        <property name="dataSource" ref="dataSource"/>
+        <property name="packagesToScan" value="com.anna.dtp.entity"/>
+    </bean>
+
+    <bean id="txManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="emf"/>
+        <property name="jpaDialect" ref="jpaDialect"/>
+    </bean>
+
+    <bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.OpenJpaDialect"/>
+
+    <tx:annotation-driven transaction-manager="txManager"/>
 
     <context:component-scan base-package="com.anna.dtp.service"/>
     <jpa:repositories base-package="com.anna.dtp.repository" entity-manager-factory-ref="emf"/>
